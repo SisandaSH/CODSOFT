@@ -1,4 +1,4 @@
-package net.penguincoders.ToDoItApp;
+package net.myapplication.ToDoItApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -11,9 +11,9 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import net.penguincoders.ToDoItApp.Adapters.ToDoAdapter;
-import net.penguincoders.ToDoItApp.Model.ToDoModel;
-import net.penguincoders.ToDoItApp.Utils.DatabaseHandler;
+import net.myapplication.ToDoItApp.Adapters.ToDoAdapter;
+import net.myapplication.ToDoItApp.Model.ToDoModel;
+import net.myapplication.ToDoItApp.Utils.DatabaseHandler;
 
 import java.util.Collections;
 import java.util.List;
