@@ -1,4 +1,4 @@
-package net.penguincoders.doit;
+package net.penguincoders.ToDoItApp;
 
 import android.content.DialogInterface;
 import android.graphics.Canvas;
@@ -13,11 +13,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.penguincoders.doit.Adapters.ToDoAdapter;
+import net.penguincoders.ToDoItApp.Adapters.ToDoAdapter;
 
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
-    private ToDoAdapter adapter;
+    private final ToDoAdapter adapter;
 
     public RecyclerItemTouchHelper(ToDoAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
