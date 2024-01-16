@@ -1,13 +1,13 @@
 package net.myapplication.ToDoItApp;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -23,22 +23,26 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
     private DatabaseHandler db;
 
-    private RecyclerView tasksRecyclerView;
     private ToDoAdapter tasksAdapter;
-    private FloatingActionButton fab;
 
     private List<ToDoModel> taskList;
 
+    /** @noinspection InstantiationOfUtilityClass*/
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        int layout = android.R.attr.layout;
+        setContentView(layout);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         db = new DatabaseHandler(this);
         db.openDatabase();
 
-        tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
+        android.R.attr R = new android.R.attr();
+        RecyclerView tasksRecyclerView = findViewById(android.R.attr.id.tasksRecyclerView);
+
+
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         tasksAdapter = new ToDoAdapter(db,MainActivity.this);
         tasksRecyclerView.setAdapter(tasksAdapter);
@@ -47,21 +51,18 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                 ItemTouchHelper(new RecyclerItemTouchHelper(tasksAdapter));
         itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
 
-        fab = findViewById(R.id.fab);
+        int id = android.R.attr.id;
+        @SuppressLint("ResourceType") FloatingActionButton fab = findViewById(id);
 
         taskList = db.getAllTasks();
         Collections.reverse(taskList);
 
         tasksAdapter.setTasks(taskList);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
-            }
-        });
+        fab.setOnClickListener(v -> AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG));
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void handleDialogClose(DialogInterface dialog){
         taskList = db.getAllTasks();

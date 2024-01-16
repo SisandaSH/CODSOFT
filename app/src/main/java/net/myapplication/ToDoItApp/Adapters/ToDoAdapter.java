@@ -1,5 +1,7 @@
 package net.myapplication.ToDoItApp.Adapters;
 
+import static android.view.View.inflate;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.myapplication.ToDoItApp.AddNewTask;
 import net.myapplication.ToDoItApp.MainActivity;
 import net.myapplication.ToDoItApp.Model.ToDoModel;
-import net.myapplication.ToDoItApp.R;
+import net.myapplication.ToDoItApp.RecyclerItemTouchHelper;
 import net.myapplication.ToDoItApp.Utils.DatabaseHandler;
 
 import java.util.List;
@@ -33,8 +35,8 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.task_layout, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext(),
+                inflate(android.R.layout.test_list_item, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -97,7 +99,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
         ViewHolder(View view) {
             super(view);
-            task = view.findViewById(R.id.todoCheckBox);
+            task = view.findViewById(RecyclerItemTouchHelper.todoCheckBox.);
         }
     }
 }
